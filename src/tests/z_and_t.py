@@ -4,7 +4,28 @@ from typing import Optional
 
 
 def test_z(m_1: float, m_2: float, e_1: float, e_2: float, alpha: Optional[float] = 0.05) -> None:
-    """ """
+    """
+    This function performs a z-test to compare
+    two measure in the form: (m_1 +- e_1) and
+    (m_2 +- e_2).
+
+    Parameters
+    ---
+    m_1: float
+        First measure.
+    m_2: float
+        Second measure.
+    e_1: float
+        First uncertainty.
+    e_2: float
+        Second uncertainty.
+
+    Optional Parameters
+    ---
+    alpha: float
+        The significance level of the test.
+        It is set to 5% by default.
+    """
     if alpha > 1:
         raise Exception("The significance level must be less than 100%")
 
