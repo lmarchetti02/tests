@@ -1,1 +1,2 @@
-from .z_and_t import test_z
+from .parametric import test_z
+from .chi import chi_sq_fit
