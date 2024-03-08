@@ -2,6 +2,8 @@ import numpy as np
 from scipy.stats import norm as norm
 from typing import Optional
 
+# TODO: add t-test
+
 
 def test_z(m_1: float, m_2: float, e_1: float, e_2: float, alpha: Optional[float] = 0.05) -> None:
     """
@@ -27,7 +29,7 @@ def test_z(m_1: float, m_2: float, e_1: float, e_2: float, alpha: Optional[float
         It is set to 5% by default.
     """
     if alpha > 1:
-        raise Exception("The significance level must be less than 100%")
+        raise ValueError("The significance level must be less than 100%")
 
     z_calc = (m_1 - m_2) / np.sqrt(e_1**2 + e_2**2)
     z_cr = norm.ppf(alpha / 2)
