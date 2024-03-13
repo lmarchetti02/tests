@@ -69,6 +69,60 @@ def chi_sq_fit(
     print("================================================")
 
 
+def chi_sq_fit_value(
+    chi2_value: float,
+    dof: int,
+    alpha: Optional[float] = 0.05,
+) -> None:
+    """
+    This function performs a chi-squared test
+    to check the goodness of a regression.
+
+    Parameters
+    ---
+    chi2_value: float
+        The value of the chi squared obtained from
+        the fit.
+    dof: int
+        The degrees of freedom of the test.
+
+    Optional Parameters
+    ---
+    alpha: float
+        The significance level of the test.
+        It is set to 5% by default.
+    """
+
+    if alpha > 1:
+        raise Exception("The significance level must be less than 100%")
+
+    chi_2_reduced = chi2_value / dof
+    chi_2_left = chi2.ppf(alpha / 2, dof)
+    chi_2_right = chi2.ppf(1 - alpha / 2, dof)
+    p_value = 1 - chi2.cdf(chi2_value, df=dof)
+
+    print("================================================")
+    print("=====       CHI-SQUARED TEST RESULTS       =====")
+    print("================================================\n")
+    print(f"{'Degrees of freedom:':<20} {dof:>27}")
+    print(f"{'Significance level:':<20} {f'{alpha*100} %':>27}")
+    print(
+        f"{'Critical values:':<20} {f'{np.round(chi_2_left, 2)}, {np.round(chi_2_right, 2)}':>27}\n"
+    )
+    print(f"{'Chi-squared:':<20} {np.round(chi2_value, 2):>27}")
+    print(f"{'Reduced chi-squared:':<20} {np.round(chi_2_reduced, 2):>27}")
+    print(f"{'P-value:':<20} {np.round(p_value, 3):>27}\n")
+
+    if p_value > alpha / 2 and p_value < 1 - alpha / 2:
+        print("Null hypothesis H0 cannot be rejected")
+    elif p_value < alpha / 2:
+        print("Null hypothesis H0 must be rejected (right tail)")
+    else:
+        print("Null hypothesis H0 must be rejected (left tail)")
+
+    print("================================================")
+
+
 @njit
 def _check_bins(bin_values: np.ndarray) -> bool:
     """
