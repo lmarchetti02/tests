@@ -40,9 +40,9 @@ def test_z(m_1: float, m_2: float, e_1: float, e_2: float, alpha: Optional[float
     print("======================================\n")
 
     print(f"{'Significance level:':<20} {f'{alpha*100} %':>17}")
-    print(f"{'|z critical|:':<20} {np.round(abs(z_cr), 2):>17}\n")
-    print(f"{'|z from data|:':<20} {np.round(abs(z_calc), 2):>17}")
-    print(f"{'P-value:':<20} {np.round(p_value, 3):>17}\n")
+    print(f"{'|z critical|:':<20} {np.round(abs(z_cr), 3):>17}\n")
+    print(f"{'|z from data|:':<20} {np.round(abs(z_calc), 3):>17}")
+    print(f"{'P-value:':<20} {np.round(p_value, 5):>17}\n")
 
     if abs(z_calc) <= abs(z_cr):
         print("Null hypothesis H0 cannot be rejected")

@@ -53,11 +53,11 @@ def chi_sq_fit(
     print(f"{'Degrees of freedom:':<20} {dof:>27}")
     print(f"{'Significance level:':<20} {f'{alpha*100} %':>27}")
     print(
-        f"{'Critical values:':<20} {f'{np.round(chi_2_left, 2)}, {np.round(chi_2_right, 2)}':>27}\n"
+        f"{'Critical values:':<20} {f'{np.round(chi_2_left, 3)}, {np.round(chi_2_right, 3)}':>27}\n"
     )
-    print(f"{'Chi-squared:':<20} {np.round(chi_2, 2):>27}")
-    print(f"{'Reduced chi-squared:':<20} {np.round(chi_2_reduced, 2):>27}")
-    print(f"{'P-value:':<20} {np.round(p_value, 3):>27}\n")
+    print(f"{'Chi-squared:':<20} {np.round(chi_2, 3):>27}")
+    print(f"{'Reduced chi-squared:':<20} {np.round(chi_2_reduced, 3):>27}")
+    print(f"{'P-value:':<20} {np.round(p_value, 5):>27}\n")
 
     if p_value > alpha / 2 and p_value < 1 - alpha / 2:
         print("Null hypothesis H0 cannot be rejected")
@@ -107,11 +107,11 @@ def chi_sq_fit_value(
     print(f"{'Degrees of freedom:':<20} {dof:>27}")
     print(f"{'Significance level:':<20} {f'{alpha*100} %':>27}")
     print(
-        f"{'Critical values:':<20} {f'{np.round(chi_2_left, 2)}, {np.round(chi_2_right, 2)}':>27}\n"
+        f"{'Critical values:':<20} {f'{np.round(chi_2_left, 3)}, {np.round(chi_2_right, 3)}':>27}\n"
     )
-    print(f"{'Chi-squared:':<20} {np.round(chi2_value, 2):>27}")
-    print(f"{'Reduced chi-squared:':<20} {np.round(chi_2_reduced, 2):>27}")
-    print(f"{'P-value:':<20} {np.round(p_value, 3):>27}\n")
+    print(f"{'Chi-squared:':<20} {np.round(chi2_value, 3):>27}")
+    print(f"{'Reduced chi-squared:':<20} {np.round(chi_2_reduced, 3):>27}")
+    print(f"{'P-value:':<20} {np.round(p_value, 5):>27}\n")
 
     if p_value > alpha / 2 and p_value < 1 - alpha / 2:
         print("Null hypothesis H0 cannot be rejected")
